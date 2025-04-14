@@ -62,7 +62,7 @@ const WeatherForecast = ({ data }: WeatherForecastProps) => {
                     {day.weather.description}
                   </p>
                 </div>
-                <div className="flex gap-2 text-sm font-medium">
+                <div className="flex flex-col sm:flex-row gap-2 text-sm font-medium">
                   <span className="flex items-center gap-1 text-blue-500">
                     <ArrowDown className="h-3 w-3" />
                     {formettedTemp(day.temp_min)}
@@ -73,7 +73,7 @@ const WeatherForecast = ({ data }: WeatherForecastProps) => {
                   </span>
                 </div>
 
-                <div className="flex justify-end gap-4">
+                <div className="flex flex-col sm:flex-row justify-end gap-4">
                   <span className="flex items-center gap-1">
                     <Droplet className="h-4 w-4 text-blue-500" />
                     <span className="text-sm text-muted-foreground">

@@ -15,9 +15,7 @@ const Header = () => {
         </Link>
   
       <div className="flex gap-4">
-        {/* search */}
         <CitySearch/>
-        {/* dark/light */}
         <div onClick={()=>{setTheme(isDark?'light':'dark')}}
           className={`flex items-center cursor-pointer transition-transform duration-500 ${isDark?"rotate-180":"rotate-0"}`}>
           {isDark? (<Sun className ="h-6 w-6 text-yellow-500 rotate-0 transition-all"/>):

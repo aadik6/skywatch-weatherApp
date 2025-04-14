@@ -3,7 +3,6 @@ import Layout from "./components/layout";
 import { ThemeProvider } from "./context/theme-provider";
 import WeatherDashboard from "./pages/weather-dashboard";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import CityPage from "./pages/cityPage";
 import { Toaster } from "sonner";
 
@@ -31,7 +30,6 @@ function App() {
           <Toaster richColors/>
         </ThemeProvider>
       </BrowserRouter>
-      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }
