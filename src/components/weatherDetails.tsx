@@ -46,7 +46,7 @@ const WeatherDetails = ({ data }: WeatherDetailsProps) => {
     },
   ];
   return (
-    <Card>
+    <Card className="bg-background">
       <CardHeader>
         <CardTitle>Weather Details</CardTitle>
       </CardHeader>

@@ -15,7 +15,7 @@ const CurrentWeather = ({ data, locationName }: CurrentWeatherProps) => {
   } = data;
   const formettedTemp = (temp: number) => `${Math.round(temp)}°C`;
   return (
-    <Card className="overflow-hidden">
+    <Card className="overflow-hidden bg-background">
       <CardContent className="p-6">
         <div className="grid gap-6 md:grid-cols-2">
           <div className="space-y-4">

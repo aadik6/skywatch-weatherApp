@@ -42,7 +42,7 @@ const WeatherForecast = ({ data }: WeatherForecastProps) => {
   const formettedTemp = (temp: number) => `${Math.round(temp)}°C`;
   const nextDays = Object.values(dailyForecast).slice(0, 6);
   return (
-    <Card>
+    <Card className="bg-background">
       <CardHeader>
         <CardTitle>Upcoming days</CardTitle>
       </CardHeader>

@@ -13,6 +13,8 @@ import CurrentWeather from "@/components/current-weather";
 import HourlyTemp from "@/components/hourly-temperature";
 import WeatherDetails from "@/components/weatherDetails";
 import WeatherForecast from "@/components/weatherForcast";
+import { FavoriteCities } from "@/components/favCities";
+// import AiSuggestion from "@/components/aiSuggestion";
 
 const WeatherDashboard = () => {
   console.log(API_CONFIG.API_KEY, "key");
@@ -89,6 +91,7 @@ const WeatherDashboard = () => {
   console.log(locationName);
   return (
     <div className="space-y-4">
+      <FavoriteCities/>
       {/* fav cities */}
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-bold tracking-tight">My location</h1>
@@ -114,7 +117,11 @@ const WeatherDashboard = () => {
           <HourlyTemp data={forecastQuery.data} />
         </div>
         <div className="grid gap-6 md:grid-cols-2 items-start">
+          <div>
           <WeatherDetails data={weatherQuery.data} />
+          {/* <AiSuggestion data={weatherQuery.data} locationName={locationName}/> */}
+
+          </div>
           <WeatherForecast data={forecastQuery.data} />
         </div>
       </div>
