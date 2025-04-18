@@ -134,31 +134,23 @@ const CitySearch = () => {
             </>
           )}
 
-          {history.length > 0 && (
+          <CommandSeparator />
+          {locations && locations.length > 0 && (
             <>
-              <CommandSeparator />
-              <CommandGroup>
-                <div className="flex items-center justify-between px-2 my-2">
-                  <p className="text-xs text-muted-foreground">
-                    Recent searches
-                  </p>
-                  <Button
-                    variant={"ghost"}
-                    size={"sm"}
-                    onClick={() => clearHistory.mutate()}
-                  >
-                    <XCircle className="h-4 w-4" />
-                    Clear
-                  </Button>
-                </div>
-                {history.map((location) => {
+              <CommandGroup heading="Suggestions">
+                {isLoading && (
+                  <div className="flex items-center justify-center p-4">
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  </div>
+                )}
+                {locations.map((location) => {
                   return (
                     <CommandItem
                       key={`${location.lat}-${location.lon}`}
                       value={`${location.lat}|${location.lon}|${location.name}|${location.country}`}
                       onSelect={handleSlect}
                     >
-                      <Clock className="mr-2 h-4 w-4 text-muted-foreground" />
+                      <Search className="mr-2 h-4 w-4" />
                       <span>{location.name}</span>
                       {location.state && (
                         <span className="text-sm text-muted-foreground">
@@ -168,45 +160,11 @@ const CitySearch = () => {
                       <span className="text-sm text-muted-foreground">
                         {location.country}
                       </span>
-                      <span className="text-sm text-muted-foreground">
-                        {format(location.searchedAt, "MMM d, h:mm a")}
-                      </span>
                     </CommandItem>
                   );
                 })}
               </CommandGroup>
             </>
-          )}
-
-          <CommandSeparator />
-          {locations && locations.length > 0 && (
-            <CommandGroup heading="Suggestions">
-              {isLoading && (
-                <div className="flex items-center justify-center p-4">
-                  <Loader2 className="h-4 w-4 animate-spin" />
-                </div>
-              )}
-              {locations.map((location) => {
-                return (
-                  <CommandItem
-                    key={`${location.lat}-${location.lon}`}
-                    value={`${location.lat}|${location.lon}|${location.name}|${location.country}`}
-                    onSelect={handleSlect}
-                  >
-                    <Search className="mr-2 h-4 w-4" />
-                    <span>{location.name}</span>
-                    {location.state && (
-                      <span className="text-sm text-muted-foreground">
-                        {location.state}
-                      </span>
-                    )}
-                    <span className="text-sm text-muted-foreground">
-                      {location.country}
-                    </span>
-                  </CommandItem>
-                );
-              })}
-            </CommandGroup>
           )}
         </CommandList>
       </CommandDialog>

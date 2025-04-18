@@ -13,6 +13,7 @@ const CurrentWeather = ({ data, locationName }: CurrentWeatherProps) => {
     main: { temp, feels_like, humidity, temp_max, temp_min },
     wind: { speed },
   } = data;
+  console.log(data,"data");
   const formettedTemp = (temp: number) => `${Math.round(temp)}°C`;
   return (
     <Card className="overflow-hidden bg-background">
