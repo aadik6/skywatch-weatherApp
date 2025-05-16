@@ -8,16 +8,15 @@ import {
   useWeatherQuery,
 } from "@/hooks/use-weather";
 import { AlertTriangle, MapPin, RefreshCcw } from "lucide-react";
-import { API_CONFIG } from "@/api/config";
+// import { API_CONFIG } from "@/api/config";
 import CurrentWeather from "@/components/current-weather";
 import HourlyTemp from "@/components/hourly-temperature";
 import WeatherDetails from "@/components/weatherDetails";
 import WeatherForecast from "@/components/weatherForcast";
 import { FavoriteCities } from "@/components/favCities";
-// import AiSuggestion from "@/components/aiSuggestion";
+import AiSuggestion from "@/components/aiSuggestion";
 
 const WeatherDashboard = () => {
-  console.log(API_CONFIG.API_KEY, "key");
   const {
     coordinates,
     error: locationError,
@@ -70,6 +69,7 @@ const WeatherDashboard = () => {
     );
   }
   const locationName = locationQuery.data?.[0];
+  const cityName = locationQuery.data?.[0].name;
   if (weatherQuery.error || forecastQuery.error) {
     return (
       <Alert variant="destructive">
@@ -88,7 +88,7 @@ const WeatherDashboard = () => {
   if (!weatherQuery.data || !forecastQuery.data) {
     return <WeatherSkeleton />;
   }
-  console.log(locationName);
+
   return (
     <div className="space-y-4">
       <FavoriteCities/>
@@ -117,10 +117,9 @@ const WeatherDashboard = () => {
           <HourlyTemp data={forecastQuery.data} />
         </div>
         <div className="grid gap-6 md:grid-cols-2 items-start">
-          <div>
+          <div className="flex flex-col gap-6">
           <WeatherDetails data={weatherQuery.data} />
-          {/* <AiSuggestion data={weatherQuery.data} locationName={locationName}/> */}
-
+          <AiSuggestion data={weatherQuery.data} locationName={cityName}/>
           </div>
           <WeatherForecast data={forecastQuery.data} />
         </div>

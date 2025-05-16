@@ -1,3 +1,4 @@
+import AiSuggestion from "@/components/aiSuggestion";
 import CurrentWeather from "@/components/current-weather";
 import FavoriteButton from "@/components/favorite-button";
 import HourlyTemp from "@/components/hourly-temperature";
@@ -11,7 +12,9 @@ import { useParams, useSearchParams } from "react-router-dom";
 
 function CityPage() {
   const [searchParams] = useSearchParams();
+  
   const params = useParams();
+  const { cityName } = params;
   const lat = parseFloat(searchParams.get("lat") || "0");
   const lon = parseFloat(searchParams.get("lon") || "0");
 
@@ -53,7 +56,11 @@ function CityPage() {
         <HourlyTemp data={forecastQuery.data} />
       </div>
       <div className="grid gap-6 md:grid-cols-2 items-start">
+        <div className="flex flex-col gap-6">
+
         <WeatherDetails data={weatherQuery.data} />
+        <AiSuggestion data={weatherQuery.data} locationName={cityName}/>
+        </div>
         <WeatherForecast data={forecastQuery.data} />
       </div>
     </div>
