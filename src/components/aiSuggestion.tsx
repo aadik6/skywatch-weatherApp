@@ -35,7 +35,7 @@ const AiSuggestion = ({ data, locationName }: AiSuggestionProps) => {
         setError(null);
 
         const response = await fetch(
-          "http://localhost:8000/api/weatherSggestion",
+          "https://portfolio-backend-mu-gules.vercel.app/api/weatherSggestion",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
